@@ -7,7 +7,7 @@ $apellido2 = $_POST["cognom2"];
 $email = $_POST["email"];
 $anyo = $_POST["any"];
 $telefono = $_POST["telefon"];
-
+// extract($_POST);
 ?>
 <head>
     <meta charset="UTF-8">
