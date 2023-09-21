@@ -11,17 +11,29 @@
 </head>
 <body>
     <?php
-    if(isset($_GET["quantitat"])) {
-        let $quantitat = $_GET["quantitat"];
-        while ($quantitat != 0) {
-            if ($quantitat - DINERO[0] > 0) {
+    $diners = $_GET["quantitat"];
+        
+    if ($diners === null) {
 
-            }
-        }
+    echo "Posa la quantitat a la variable quantitat pel QueryString";
+
     } else {
-        echo "Posa la quantitat a la variable quantitat pel QueryString";
+    
+    $billets = array(500, 200, 100, 50, 20, 10, 5);
+    $monedas = array(2, 1);
+
+    foreach ($billets as $a) {
+        $num = intdiv($diners, $a);
+        echo "<p>" . $num . " bitllet de " . $a . "</p>";
+        $diners -= $num * $a;
+    }
+
+    foreach ($monedas as $a) {
+        $num = intdiv($diners, $a);
+        echo "<p>" . $num . " moneda de " . $a . "</p>";
+        $diners -= $num * $a;
+    }
     }
     ?>
-
 </body>
 </html>
