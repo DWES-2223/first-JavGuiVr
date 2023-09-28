@@ -7,14 +7,19 @@
 </head>
 <body>
 <?php
-if (isset($_GET["productes"])) {
-    $productes = $_GET["productes"];
-    if ($productes > 0) {
-        foreach ($productes as $producte) {
-            echo "<p>" . $producte['nom'] . "</p><p>" . $producte['cost'] . "</p><br>";
-            echo "Nombre: " . $producte->nom . "<br>";
-            echo "Preu: " . $producte->cost . "<br><br>";
+if (isset($_GET["quantitat"])) {
+    $quantitat = $_GET["quantitat"];
+    if ($quantitat > 0) {
+        echo '<form method="post" action="244b.php">';
+        for ($i = 1; $i <= $quantitat; $i++) {
+            echo '<label for="nom">Nom producte ' . $i . ': </label>';
+            echo '<input type="text" id="nom' . $i . '" name="noms[]"><br>';
+
+            echo '<label for="altura">Preu del producte ' . $i . ': </label>';
+            echo '<input type="text" id="altura' . $i . '" name="preus[]"><br><br>';
         }
+        echo '<button type="submit">Enviar productos</button>';
+        echo '</form>';
     } else {
         echo "La quantitat introduida no es vàlida";
     }

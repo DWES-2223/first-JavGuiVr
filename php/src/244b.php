@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include_once ("functions.php");
+include_once("functions.php");
 $totalEuros = 0;
 $totalPesetes = 0;
 ?>
@@ -12,34 +12,34 @@ $totalPesetes = 0;
 </head>
 <body>
 <?php
-if (isset($_GET["productes"])) {
-    $productes = $_GET["productes"];
-    if ($productes > 0) {
-        echo "<table>";
-        echo "<tr>
+if (isset($_POST["noms"]) && isset($_POST["preus"])) {
+    $noms = $_POST["noms"];
+    $producteEuros = $_POST["preus"];
+    if (count($noms) === count($producteEuros)) {
+        if (count($noms) > 0 && count($producteEuros) > 0) {
+            echo "<table style='border: 1px solid black;'>";
+            echo "<tr>
         <th>Producto</th>
         <th>Precio en euro</th>
         <th>Precio en peseta</th>
         </tr>";
-        foreach ($productes as $producte) {
-            $nombre = $producte['nombre'];
-            $producteEuros = $producte['cost'];
-            $productePesetas = euro2pesetes($producteEuros);
-
-            $totalEuros += $producteEuros;
-            $totalPesetes += $productePesetas;
+            for ($i = 0; $i < count($noms); $i++) {
+                $productePesetas = euro2pesetes($producteEuros[$i]);
+                $totalEuros += $producteEuros[$i];
+                $totalPesetes += $productePesetas;
+                echo "<tr>";
+                echo "<td>$noms[$i]</td>";
+                echo "<td>$producteEuros[$i]</td>";
+                echo "<td>$productePesetas</td>";
+                echo "</tr>";
+            }
             echo "<tr>";
-            echo "<td>$nombre</td>";
-            echo "<td>$producteEuros</td>";
-            echo "<td>$productePesetas</td>";
+            echo "<td><b>Total</b></td>";
+            echo "<td><b>$totalEuros</b></td>";
+            echo "<td><b>$totalPesetes</b></td>";
             echo "</tr>";
+            echo "</table>";
         }
-        echo "<tr>";
-        echo "<td><b>Total</b></td>";
-        echo "<td><b>$totalEuros</b></td>";
-        echo "<td><b>$totalPesetes</b></td>";
-        echo "</tr>";
-        echo "</table>";
     } else {
         echo "La quantitat introduida no es vàlida";
     }

@@ -44,3 +44,45 @@ function concatenar(...$paraules): string {
         return $cadena;
     }
 }
+
+function digits(int $num): int {
+    return strlen((string)$num);
+}
+
+function digitsN(int $num, int $post): int {
+    $numStr = (string)$num;
+    $numArray = str_split($numStr);
+    if ($post < 0 || $post >= strlen($numStr)) {
+        return -1;
+    } else {
+        return $numArray[$post-1];
+    }
+}
+
+function llevaDarrere(int $num, int $cant): int {
+    $numString = (string)$num;
+    if ($cant == 0 || $cant > strlen($numString) || $cant < 0) {
+        return -1;
+    } else {
+        $substring = substr($numString, -$cant);
+        return (int)$substring;
+    }
+}
+
+function llevaDavant(int $num, int $cant): int {
+    $numString = (string)$num;
+    if ($cant == 0 || $cant > strlen($numString) || $cant < 0) {
+        return -1;
+    } else {
+        $substring = substr($numString, 0, $cant);
+        return (int)$substring;
+    }
+}
+
+function peseta2euros(float $quant, float $cotizacio = 0.0060): float {
+    return $quant * $cotizacio;
+}
+
+function euro2pesetes(float $quant, float $cotizacio = 166.386): float {
+    return $quant * $cotizacio;
+}
