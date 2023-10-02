@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 270a php - Javier Guijarro</title>
+    <title>Ejercicio 270 php - Javier Guijarro</title>
 </head>
 <body>
 <h1>Records d'atletisme</h1>
