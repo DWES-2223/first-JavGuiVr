@@ -1,12 +1,12 @@
 <?php
-
 namespace Clases;
+const LIMITE_EDAD = 66;
 class Persona8
 {
     public function __construct(
         private string $nom,
         private string $cognoms,
-        private int $edad = 25,
+        private int $edad = LIMITE_EDAD
     ) {}
 
     public function getNom(): string
